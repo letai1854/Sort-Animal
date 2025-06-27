@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed8b3e60e20e124389d03f39b43c698, type: 3}
+  m_Name: Terrestrial animals
+  m_EditorClassIdentifier: 
+  itemName: Terrestrial animals
+  icon: {fileID: -3731192988847980706, guid: 733ce1a0bb463634e8e91a226cc97be5, type: 3}
+  value: 0
+  isPurchasable: 1
+  isChoiceItem: 1
+  habitatType: 0

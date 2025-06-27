@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed8b3e60e20e124389d03f39b43c698, type: 3}
+  m_Name: BG_Forest
+  m_EditorClassIdentifier: 
+  itemName: Forest background
+  icon: {fileID: 2668876027207784330, guid: 0b6be64c19f48424baebdc7d18c06c88, type: 3}
+  value: 0
+  isPurchasable: 1
+  isChoiceItem: 1
+  habitatType: 0

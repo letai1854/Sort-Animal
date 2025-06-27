@@ -1,0 +1,72 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "comment": "Demo Level - Height 4",
+      "tubeHeight": 4,
+      "tubes": [
+        { "animals": ["Animal01", "Animal03", "Animal01", "Animal04"] },
+        { "animals": ["Animal04", "Animal03", "Animal04", "Animal03"] },
+        { "animals": ["Animal03"] },
+        { "animals": ["Animal04"] },
+        { "animals": ["Animal01", "Animal01"] }
+      ]
+    },
+    {
+      "level": 2,
+      "comment": "Demo Level - Height 5 - More complex (Fixed)",
+      "tubeHeight": 5,
+      "tubes": [
+        { "animals": ["Animal05", "Animal06", "Animal09", "Animal01", "Animal05"] },
+        { "animals": ["Animal06", "Animal09", "Animal01", "Animal05", "Animal06"] },
+        { "animals": ["Animal09", "Animal01", "Animal05", "Animal06", "Animal09"] },
+        { "animals": ["Animal01", "Animal05", "Animal06", "Animal09", "Animal01"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 3,
+      "comment": "Demo Level - Height 4 - Fewer tubes, tricky (Fixed with valid animals)",
+      "tubeHeight": 4,
+      "tubes": [
+        { "animals": ["Animal05", "Animal03", "Animal09", "Animal05"] },
+        { "animals": ["Animal03", "Animal09", "Animal05", "Animal03"] },
+        { "animals": [] },
+        { "animals": ["Animal09", "Animal05", "Animal03", "Animal09"] }
+      ]
+    },
+    {
+      "level": 4,
+      "comment": "Medium Difficulty - Height 10 - 6 Tubes Total",
+      "tubeHeight": 10,
+      "tubes": [
+        { "animals": ["Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06"] },
+        { "animals": ["Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01"] },
+        { "animals": ["Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06"] },
+        { "animals": ["Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01", "Animal09", "Animal06", "Animal03", "Animal01"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 5,
+      "comment": "Hard Difficulty - 12 Tubes / 10 Animals - Height 4",
+      "tubeHeight": 4,
+      "tubes": [
+        { "animals": ["Animal09", "Animal02", "Animal04", "Animal03"] },
+        { "animals": ["Animal06", "Animal10", "Animal05", "Animal08"] },
+        { "animals": ["Animal07", "Animal01", "Animal09", "Animal02"] },
+        { "animals": ["Animal04", "Animal03", "Animal06", "Animal10"] },
+        { "animals": ["Animal05", "Animal08", "Animal07", "Animal01"] },
+        { "animals": ["Animal09", "Animal02", "Animal04", "Animal03"] },
+        { "animals": ["Animal06", "Animal10", "Animal05", "Animal08"] },
+        { "animals": ["Animal07", "Animal01", "Animal09", "Animal02"] },
+        { "animals": ["Animal04", "Animal03", "Animal06", "Animal10"] },
+        { "animals": ["Animal05", "Animal08", "Animal07", "Animal01"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    }
+  ]
+}

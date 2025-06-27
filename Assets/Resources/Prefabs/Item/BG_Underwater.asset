@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed8b3e60e20e124389d03f39b43c698, type: 3}
+  m_Name: BG_Underwater
+  m_EditorClassIdentifier: 
+  itemName: Underwater background
+  icon: {fileID: -4826282271390203859, guid: 5b387efee20fa7540b52c0a75ed238c6, type: 3}
+  value: 100
+  isPurchasable: 0
+  isChoiceItem: 0
