@@ -127,9 +127,9 @@ MonoBehaviour:
     - type: 3
       sprite: {fileID: 5604796196903453309, guid: fb420a5f8eaa993428ef9bd6246d371e, type: 3}
     - type: 4
-      sprite: {fileID: -6989495785908772370, guid: c1ca14b960f873c4ab97ba3d076ca25e, type: 3}
+      sprite: {fileID: -8283620988547500454, guid: 27dc91f7e909d704b8e5e8e50137d29f, type: 3}
     - type: 5
-      sprite: {fileID: -4589246329914201413, guid: 942c717dd478bb54ea55463e63c9d39c, type: 3}
+      sprite: {fileID: 2412525675868892666, guid: 622f74f773885854ebf4fdd96743595a, type: 3}
     - type: 6
       sprite: {fileID: -3385415037828575978, guid: b5093382a6974014fba4cd0dfa637bf8, type: 3}
     - type: 7

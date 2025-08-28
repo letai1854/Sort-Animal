@@ -12,6 +12,10 @@ public class HomeScreen : BaseScreen
     private Button playButton;
     [SerializeField]
     private Button shopButton;
+
+    [SerializeField]
+    private Button infoButton;
+
     [Header("UI Level")]
 
     public TextMeshProUGUI level;
@@ -43,14 +47,25 @@ public class HomeScreen : BaseScreen
     {
         playButton.onClick.AddListener(ShowGame);
         shopButton.onClick.AddListener(ShowShop);
+        infoButton.onClick.AddListener(ShowInfo);
     }
 
     void ShowGame()
     {
+        if(UIManager.Instance.CurPopup!=null)
+            UIManager.Instance.CurPopup.Hide();
+        SoundManager.Instance.PlayButtonClick();
         UIManager.Instance.ShowScreen<GamePlay>();
+        SoundManager.Instance.PlayGameplay();
+    }
+    void ShowInfo()
+    {
+        SoundManager.Instance.PlayButtonClick();
+        UIManager.Instance.ShowPopup<PopupInfo>();
     }
     void ShowShop()
     {
+        SoundManager.Instance.PlayButtonClick();
         UIManager.Instance.ShowPopup<PopupShopPannel>();
     }
 

@@ -9,7 +9,8 @@ public class GameBoardView : MonoBehaviour
 {
     [Header("View References")]
 
-
+    [SerializeField]
+    private Image backgroundImage;
 
     [Header("UI Button")]
 
@@ -104,7 +105,14 @@ public class GameBoardView : MonoBehaviour
     {
         this.level.text = "Level "+level.ToString();
     }
-   
+   public void SetBackground(Sprite backgroundSprite)
+    {
+        if (backgroundImage != null && backgroundSprite != null)
+        {
+            backgroundImage.sprite = backgroundSprite;
+        }
+    }
+
 }
 
 

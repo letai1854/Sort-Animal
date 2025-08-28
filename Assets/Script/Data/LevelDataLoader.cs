@@ -25,80 +25,6 @@ public class LevelDataLoader : SingletonMonoBehaviour<LevelDataLoader>
         return targetLevelConfig;
     }
 
-    public int GetCurrentLevel()
-    {
-        string jsonData = LoadAndSaveGame.Instance. GetJsonData(CONST.LEVEL_CURRENT_PATH);
-        if (int.TryParse(jsonData, out int level))
-        {
-            return level;
-        }
-        return 1;
-
-    }
-
-    //public string GetJsonData(string file_path)
-    //{
-    //    TextAsset jsonFile = Resources.Load<TextAsset>(file_path);
-    //    if (jsonFile == null)
-    //    {
-    //        Debug.LogError($"Could not load level data file: Resources/.json (or without extension)");
-    //    }
-    //    string jsonData = jsonFile.text;
-    //    return jsonData;
-    //}
-    public bool SaveCurrentPlayingLevelId(int newCurrentLevelId)
-    {
-        try
-        {
-            int nextLevel = newCurrentLevelId + 1;
-            if(nextLevel > allLevelsDataCache.levels.Count)
-            {
-                nextLevel = newCurrentLevelId;
-            }
-            currentLevel = nextLevel;
-            bool isSave = LoadAndSaveGame.Instance.SaveData(nextLevel.ToString(), CONST.LEVEL_CURRENT);
-            if (isSave) { 
-                return true;
-            }
-            return false;
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Error saving level ID: {ex.Message}");
-            return false;
-        }
-
-    }
-    //public bool SaveCurrentPlayingLevelId(int newCurrentLevelId)
-    //{
-    //    try
-    //    {
-    //        int nextLevel = newCurrentLevelId + 1;
-    //        if (nextLevel > allLevelsDataCache.levels.Count)
-    //        {
-    //            nextLevel = newCurrentLevelId;
-    //        }
-    //        currentLevel = nextLevel;
-    //        string folderPath = Path.Combine(Application.dataPath, CONST.RESOURCES);
-    //        string filePath = Path.Combine(folderPath, CONST.LEVEL_CURRENT);
-
-    //        if (!Directory.Exists(folderPath))
-    //        {
-    //            Directory.CreateDirectory(folderPath);
-    //        }
-
-    //        File.WriteAllText(filePath, nextLevel.ToString());
-
-    //        Debug.Log($"Level ID {nextLevel} saved to: {filePath}");
-    //        return true;
-    //    }
-    //    catch (System.Exception ex)
-    //    {
-    //        Debug.LogError($"Error saving level ID: {ex.Message}");
-    //        return false;
-    //    }
-
-    //}
     public int CheckLevel(int levelFile)
     {
         if (currentLevel > levelFile)
@@ -108,4 +34,53 @@ public class LevelDataLoader : SingletonMonoBehaviour<LevelDataLoader>
         return levelFile;
     }
 
+    public int GetCurrentLevel()
+    {
+        string levelString = LoadAndSaveGame.Instance.ReadData(CONST.LEVEL_CURRENT_PATH);
+
+        if (string.IsNullOrEmpty(levelString) || !int.TryParse(levelString, out int savedLevel))
+        {
+            return 1;
+        }
+
+        return savedLevel;
+
+    }
+    public bool SaveCurrentPlayingLevelId(int newCurrentLevelId)
+    {
+        try
+        {
+            if (allLevelsDataCache == null || allLevelsDataCache.levels == null || allLevelsDataCache.levels.Count == 0)
+            {
+                Debug.LogError("All levels data cache is not loaded. Cannot determine next level.");
+                return false;
+            }
+
+            int nextLevel = newCurrentLevelId + 1;
+
+            if (nextLevel > allLevelsDataCache.levels.Count)
+            {
+                nextLevel = allLevelsDataCache.levels.Count;
+                Debug.Log("Player has completed all levels. Setting to the last level.");
+            }
+
+            currentLevel = nextLevel;
+
+            bool isSaved = LoadAndSaveGame.Instance.WriteData(nextLevel.ToString(), CONST.LEVEL_CURRENT_PATH);
+
+            return isSaved;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Error saving level ID: {ex.Message}");
+            return false;
+        }
+
+    }
+
+
+
+
+
+   
 }

@@ -15,9 +15,11 @@ public class PopupWin : BasePopup
     Button continueButton;
     [SerializeField]
     Button homeButton;
-
+    public TextMeshProUGUI textCoin;
     public event Action OnHomeButtonPressedEvent;
     public event Action OnButtonContinueEvent;
+    CoinData coinData;
+    public TextMeshProUGUI numberCoin;
 
     private void Awake()
     {
@@ -57,13 +59,34 @@ public class PopupWin : BasePopup
     public override void Show(object data)
     {
         base.Show(data);
+        coinData = data as CoinData;
         Baron.gameObject.SetActive(true);
         Coin.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
         homeButton.gameObject.SetActive(true);
+        SoundManager.Instance.StopMusic();
+        SoundManager.Instance.PlayWin();
+        SoundManager.Instance.PlayGameplay();
+
         StartCoroutine(ShowPopupWinCoroutin());
+        LoadCoinPopup();
+        UPdateCoin();
 
 
+    }
+
+    void LoadCoinPopup()
+    {
+        int coins = coinData.totalCoins;
+        if (coins > 100000)
+        {
+            textCoin.text = "99999";
+        }
+        else
+        {
+            textCoin.text = coins.ToString();
+
+        }
     }
     private IEnumerator ShowPopupWinCoroutin()
     {
@@ -74,19 +97,9 @@ public class PopupWin : BasePopup
         yield return new WaitForSeconds(0.2f);
         homeButton.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutExpo);
         yield return new WaitForSeconds(0.2f);
-
-        //continueButton.gameObject.transform.DOScale(new Vector3(1.4f, 1.4f, 1.4f), 0.4f).SetEase(Ease.InOutExpo);
-        //yield return new WaitForSeconds(0.3f);
-        //continueButton.gameObject.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutSine);
-
-        //homeButton.gameObject.transform.DOScale(new Vector3(1.4f, 1.4f, 1.4f), 0.3f).SetEase(Ease.InOutExpo);
-        //yield return new WaitForSeconds(0.2f);
-        //homeButton.gameObject.transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.InOutSine);
-
         Coin.gameObject.transform.DOScale(new Vector3 (1.45f,1.45f,1.45f), 0.3f).SetEase(Ease.InOutExpo);
         yield return new WaitForSeconds(0.3f);
         Coin.gameObject.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InOutSine);
-        //EffectManager.Instance.RandomEffectFireWorkWin();
         EffectManager.Instance.StartRandomFireworkWinLoop();
 
 
@@ -94,12 +107,20 @@ public class PopupWin : BasePopup
 
     private void OnlickContinue()
     {
-        UIManager.Instance.HideAllPopups();
+        SoundManager.Instance.PlayButtonClick();
+
         OnButtonContinueEvent.Invoke();
+        Hide();
         EffectManager.Instance.StopRandomFireworkWinLoop();
+    }
+    public void UPdateCoin()
+    {
+        numberCoin.text = "+"+ coinData.coins.ToString();
     }
     private void HandleHomeClick()
     {
+        SoundManager.Instance.PlayButtonClick();
+
         UIManager.Instance.HideAllPopups();
         EffectManager.Instance.StopRandomFireworkWinLoop();
         UIManager.Instance.ShowScreen<HomeScreen>();

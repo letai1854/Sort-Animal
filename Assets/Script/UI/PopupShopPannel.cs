@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,8 @@ public class PopupShopPannel : BasePopup
 
      public Sprite imageButtonBGBackup;
 
+    public TextMeshProUGUI textCoin;
+
     public override void Hide()
     {
         base.Hide();
@@ -38,21 +41,37 @@ public class PopupShopPannel : BasePopup
         BackHome();
         OnClickButtonAnimal();
         OnClickButtonBG();
+        LoadCoinPopup();
     }
 
     public override void Show(object data)
     {
         base.Show(data);
-        BackHome();
         SetUpContentPopup();
         OnClickButtonAnimal();
         OnClickButtonBG();
+        LoadCoinPopup();
     }
 
+    public void LoadCoinPopup()
+    {
+        int coins = GameManager.Instance.shopDataLoader.LoadCoin();
+        if (coins > 100000)
+        {
+            textCoin.text = "99999";
+        }
+        else
+        {
+            textCoin.text = coins.ToString();
+
+        }
+    }
     public void OnClickButtonAnimal()
     {
         buttonAnimal.onClick.AddListener(() =>
         {
+            SoundManager.Instance.PlayButtonClick();
+
             OnClickButtonAnimalEvent?.Invoke(TypeItem.Animal);
         });
     }
@@ -60,15 +79,25 @@ public class PopupShopPannel : BasePopup
     {
         buttonBG.onClick.AddListener(() =>
         {
+            SoundManager.Instance.PlayButtonClick();
+
             OnClickButtonBGEvent?.Invoke(TypeItem.Background);
         });
     }
 
     void BackHome()
     {
+
         back.onClick.AddListener(() =>
         {
-            UIManager.Instance.HideAllPopups();
+            SoundManager.Instance.PlayButtonClick();
+            if(UIManager.Instance.CurOverlap != null)
+                UIManager.Instance.CurOverlap.Hide();
+
+            this.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.OutSine).OnComplete(() =>
+            {
+                Hide();
+            });
         });
     }
     public void SetImageTabChoice(TypeItem typeItem)

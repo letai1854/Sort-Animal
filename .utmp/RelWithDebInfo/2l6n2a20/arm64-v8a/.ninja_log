@@ -1,0 +1,23 @@
+# ninja log v5
+2295	2761	7727029585213692	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6730f848f67c6f7a
+9	2591	7727029581871287	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	9b8ae0e838812746
+1354	3220	7727029589720463	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	cec106d8b95ab0b2
+2761	3376	7727029591109290	D:/WorkSpace/ProjectGame/AnimalSortPuzzle/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6n2a20/obj/arm64-v8a/libswappywrapper.so	d78b46b1926b031a
+781	2723	7727029584776862	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	2cabecd7fcf2edab
+1636	3484	7727029592418888	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	ebe97a96c9b5d501
+266	2593	7727029578404587	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	23f953e1b94ea03b
+523	2596	7727029581128424	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	bd6cdab89b837015
+1046	3356	7727029591109290	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	661919ec4aa00fd
+1929	3822	7727029595766515	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	1f5cf627ead945b6
+3822	4333	7727029600875050	D:/WorkSpace/ProjectGame/AnimalSortPuzzle/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6n2a20/obj/arm64-v8a/libgame.so	5f5b7d47da58ab9d
+2538	3626	7729974083617736	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6730f848f67c6f7a
+1180	4295	7729974090407568	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	cec106d8b95ab0b2
+347	4331	7729974090765449	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	bd6cdab89b837015
+623	4446	7729974091911163	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	2cabecd7fcf2edab
+901	4656	7729974093965154	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	23f953e1b94ea03b
+1522	4870	7729974096115208	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	ebe97a96c9b5d501
+3627	4875	7729974095579333	D:/WorkSpace/ProjectGame/AnimalSortPuzzle/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6n2a20/obj/arm64-v8a/libswappywrapper.so	d78b46b1926b031a
+21	5668	7729974104102220	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	9b8ae0e838812746
+1837	6055	7729974108022137	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	661919ec4aa00fd
+2190	6098	7729974108418587	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	1f5cf627ead945b6
+6099	6858	7729974115911017	D:/WorkSpace/ProjectGame/AnimalSortPuzzle/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6n2a20/obj/arm64-v8a/libgame.so	5f5b7d47da58ab9d

@@ -269,7 +269,7 @@ public class UIManager : BaseManager<UIManager>
     // --- Overlap Facade Methods ---
     public void HideAllOverlaps() => overlapSubsystem?.HideAll();
     public T GetExistOverlap<T>() where T : BaseOverlap => overlapSubsystem?.GetExist<T>();
-    public void ShowOverlap<T>(object data = null, bool forceShowData = false) where T : BaseOverlap => overlapSubsystem?.Show<T>(data, forceShowData);
+    public void ShowOverlap<T>(object data = null, bool forceShowData = true) where T : BaseOverlap => overlapSubsystem?.Show<T>(data, forceShowData);
 
     // --- General UI Management Facade Methods ---
     public void HideAll(UIType type)

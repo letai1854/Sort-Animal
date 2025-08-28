@@ -14,18 +14,13 @@ public class LoadAndSaveGame :SingletonMonoBehaviour<LoadAndSaveGame>
         string jsonData = jsonFile.text;
         return jsonData;
     }
-    public bool SaveData(string content,string pathFile)
+
+
+    public bool WriteData(string content, string fileName)
     {
         try
         {
-
-            string folderPath = Path.Combine(Application.dataPath, CONST.RESOURCES);
-            string filePath = Path.Combine(folderPath, pathFile);
-
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
+            string filePath = Path.Combine(Application.persistentDataPath, fileName);
 
             File.WriteAllText(filePath, content);
 
@@ -33,9 +28,31 @@ public class LoadAndSaveGame :SingletonMonoBehaviour<LoadAndSaveGame>
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"Error saving level ID: {ex.Message}");
+            Debug.LogError($"Error saving data to {fileName}: {ex.Message}");
             return false;
         }
-
     }
+
+    public string ReadData(string fileName)
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+
+        if (File.Exists(filePath))
+        {
+            try
+            {
+                return File.ReadAllText(filePath);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Error loading data from {fileName}: {ex.Message}");
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }

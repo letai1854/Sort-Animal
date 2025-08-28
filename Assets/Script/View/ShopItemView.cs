@@ -1,9 +1,20 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static ShopContronler;
 
-public class ShopItemView : MonoBehaviour
+    public class DataItemView
+    {
+        public string itemName;
+        public int value;
+        public int id;
+        public Action<int, ChoseItem> onclickItemEvent;
+        public bool isChoice;
+}
+public class ShopItemView : MonoBehaviour, IPointerClickHandler
 {
     public Image imageItem;
     public Image tickImage;
@@ -14,14 +25,19 @@ public class ShopItemView : MonoBehaviour
     public bool isPurchasable;
     public bool isChoiceItem;
     public TextMeshProUGUI priceText;
+
+
+    DataItemView dataItemView;
+    event Action<int> onclickItemEvent;
     void Start()
     {
         //tickImage.gameObject.SetActive(false);
         //coins.SetActive(false);
         //imageItem.color = new Color32(128, 128, 128, 255);
     }
-    public void SetUpItem(Sprite sprite, string name, int price, int id, bool isPurchasable, bool isChoiceItem)
+    public void SetUpItem(Sprite sprite, string name, int price, int id, bool isPurchasable, bool isChoiceItem, Action<int, ChoseItem> onclickItem)
     {
+ 
         imageItem.sprite = sprite;
         textName = name;
         this.price = price;
@@ -29,6 +45,14 @@ public class ShopItemView : MonoBehaviour
         this.isPurchasable = isPurchasable;
         this.isChoiceItem = isChoiceItem;
 
+        dataItemView = new DataItemView
+        {
+            itemName = name,
+            value = price,
+            id = id,
+            onclickItemEvent = onclickItem,
+            isChoice = isChoiceItem
+        };
         //SetPurchasable(isPurchasable);
         //SetTickImage(isChoiceItem);
         UpdateVisuals();
@@ -62,4 +86,21 @@ public class ShopItemView : MonoBehaviour
         }
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SoundManager.Instance.PlayButtonClick();
+
+        if (!isPurchasable)
+        {
+
+            UIManager.Instance.ShowOverlap<PopupBuy>(dataItemView);
+            return;
+        }    
+        if (!isChoiceItem)
+        {
+
+                UIManager.Instance.ShowOverlap<PopupUseOrNotUse>(dataItemView);
+         
+        }
+    }
 }

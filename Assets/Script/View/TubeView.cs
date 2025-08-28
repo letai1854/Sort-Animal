@@ -57,7 +57,6 @@ public class TubeView : MonoBehaviour, IPointerClickHandler
 
     bool checkHasWait = false;
     bool checkLastAnimal;
-
     private AnimalHabitatType animalHabitatType = AnimalHabitatType.Forest;
     void Awake()
     {

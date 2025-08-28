@@ -68,5 +68,86 @@
         { "animals": [] }
       ]
     }
+    ,
+    {
+      "level": 6,
+      "comment": "Medium - 5 Animal Types, some pre-stacked (Height 4)",
+      "tubeHeight": 4,
+      "tubes": [
+        { "animals": ["Animal01", "Animal02", "Animal03", "Animal01"] },
+        { "animals": ["Animal02", "Animal04", "Animal05", "Animal02"] },
+        { "animals": ["Animal03", "Animal04", "Animal01", "Animal03"] },
+        { "animals": ["Animal04", "Animal05", "Animal02", "Animal04"] },
+        { "animals": ["Animal05", "Animal01", "Animal03", "Animal05"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 7,
+      "comment": "Medium-Hard - Height 5 with 7 animal types",
+      "tubeHeight": 5,
+      "tubes": [
+        { "animals": ["Animal01", "Animal02", "Animal03", "Animal04", "Animal05"] },
+        { "animals": ["Animal06", "Animal07", "Animal01", "Animal02", "Animal03"] },
+        { "animals": ["Animal04", "Animal05", "Animal06", "Animal07", "Animal01"] },
+        { "animals": ["Animal02", "Animal03", "Animal04", "Animal05", "Animal06"] },
+        { "animals": ["Animal07", "Animal01", "Animal02", "Animal03", "Animal04"] },
+        { "animals": ["Animal05", "Animal06", "Animal07", "Animal01", "Animal02"] },
+        { "animals": ["Animal03", "Animal04", "Animal05", "Animal06", "Animal07"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 8,
+      "comment": "Hard - Deep Tubes (Height 10), limited space",
+      "tubeHeight": 10,
+      "tubes": [
+        { "animals": ["Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09"] },
+        { "animals": ["Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11"] },
+        { "animals": ["Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09"] },
+        { "animals": ["Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11", "Animal08", "Animal09", "Animal10", "Animal11"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 9,
+      "comment": "Tricky - Wide layout (12 tubes), many animal types",
+      "tubeHeight": 4,
+      "tubes": [
+        { "animals": ["Animal01", "Animal02", "Animal03", "Animal04"] },
+        { "animals": ["Animal05", "Animal06", "Animal07", "Animal08"] },
+        { "animals": ["Animal09", "Animal10", "Animal01", "Animal02"] },
+        { "animals": ["Animal03", "Animal04", "Animal05", "Animal06"] },
+        { "animals": ["Animal07", "Animal08", "Animal09", "Animal10"] },
+        { "animals": ["Animal01", "Animal03", "Animal05", "Animal07"] },
+        { "animals": ["Animal09", "Animal02", "Animal04", "Animal06"] },
+        { "animals": ["Animal08", "Animal10", "Animal01", "Animal03"] },
+        { "animals": ["Animal05", "Animal07", "Animal09", "Animal02"] },
+        { "animals": ["Animal04", "Animal06", "Animal08", "Animal10"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    },
+    {
+      "level": 10,
+      "comment": "Expert - 9 Animal types, nearly full tubes (Height 5)",
+      "tubeHeight": 5,
+      "tubes": [
+        { "animals": ["Animal01", "Animal02", "Animal03", "Animal04", "Animal05"] },
+        { "animals": ["Animal06", "Animal07", "Animal08", "Animal09", "Animal01"] },
+        { "animals": ["Animal02", "Animal03", "Animal04", "Animal05", "Animal06"] },
+        { "animals": ["Animal07", "Animal08", "Animal09", "Animal01", "Animal02"] },
+        { "animals": ["Animal03", "Animal04", "Animal05", "Animal06", "Animal07"] },
+        { "animals": ["Animal08", "Animal09", "Animal01", "Animal02", "Animal03"] },
+        { "animals": ["Animal04", "Animal05", "Animal06", "Animal07", "Animal08"] },
+        { "animals": ["Animal09", "Animal01", "Animal02", "Animal03", "Animal04"] },
+        { "animals": ["Animal05", "Animal06", "Animal07", "Animal08", "Animal09"] },
+        { "animals": [] },
+        { "animals": [] }
+      ]
+    }
   ]
 }

@@ -655,6 +655,7 @@ MonoBehaviour:
   uiButton: {fileID: 8475475771232373026}
   playButton: {fileID: 3135889014336568578}
   shopButton: {fileID: 2140441196037024355}
+  infoButton: {fileID: 4500820235094493506}
   level: {fileID: 3257690631046810304}
 --- !u!1 &9013384420063758657
 GameObject:
@@ -722,7 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4046845336970948387, guid: 2dfe59b63a00e104a83f15aede01be02, type: 3}
+  m_Sprite: {fileID: -7352394766361074428, guid: 273d1091bba8bc9448e64912821a922d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

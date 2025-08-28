@@ -1,0 +1,57 @@
+{
+  "playerCoins": 99999,
+  "habitatAnimalStates": [
+    {
+      "itemName": "Terrestrial animals",
+      "isPurchased": true,
+      "isSelected": true
+    },
+    {
+      "itemName": "Aquatic animals",
+      "isPurchased": false,
+      "isSelected": false
+    },
+    {
+      "itemName": "Terrestrial and aquatic animals",
+      "isPurchased": false,
+      "isSelected": false
+    }
+  ],
+  "shopBGStates": [
+    {
+      "itemName": "Forest background",
+      "isPurchased": true,
+      "isSelected": true
+    },
+    {
+      "itemName": "Underwater background",
+      "isPurchased": true,
+      "isSelected": false
+    },
+    {
+      "itemName": "Countryside background",
+      "isPurchased": true,
+      "isSelected": false
+    },
+    {
+      "itemName": "Fishing background",
+      "isPurchased": false,
+      "isSelected": false
+    },
+    {
+      "itemName": "Volcano background",
+      "isPurchased": false,
+      "isSelected": false
+    },
+    {
+      "itemName": "City background",
+      "isPurchased": false,
+      "isSelected": false
+    },
+    {
+      "itemName": "Train background",
+      "isPurchased": false,
+      "isSelected": false
+    }
+  ]
+}

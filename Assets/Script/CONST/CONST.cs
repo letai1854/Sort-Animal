@@ -14,4 +14,8 @@ public class CONST
 
     public const string SETTINGSAVE = "setting.json";
     public const string SETTINGLOAD = "setting";
+
+    public const string SAVE_FILE_NAME = "gamesave.json";
+
+    public const string TUBELAYOUT = "TubesLayoutContainer";
 }

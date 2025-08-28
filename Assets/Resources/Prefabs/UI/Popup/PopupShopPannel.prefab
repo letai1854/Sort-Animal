@@ -4550,6 +4550,7 @@ MonoBehaviour:
   imageButtonBG: {fileID: 2128056939911590947}
   imageButtonAnimalBackup: {fileID: 0}
   imageButtonBGBackup: {fileID: 0}
+  textCoin: {fileID: 4882275028696282192}
 --- !u!114 &1696020980159952383
 MonoBehaviour:
   m_ObjectHideFlags: 0

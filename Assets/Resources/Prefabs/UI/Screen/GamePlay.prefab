@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5132fa232be3eb048878fd5f33dde0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 4478341208445160632}
   undoButton: {fileID: 1384763785460961463}
   restartButton: {fileID: 7714830913655261863}
   homeButton: {fileID: 1203225209297289938}

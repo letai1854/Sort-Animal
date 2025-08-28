@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
     private float noActionTimer = 0f;
     [Header("Undo Logic & State")]
     public  int maxUndoPerLevel;
+    int hintId = 0;
     protected  void Awake()
     {
         TubeView.OnTubeTapped += HandleTubeTapEvent;
@@ -102,14 +103,20 @@ public class GameController : MonoBehaviour
         boardView.UpdateUndoCountDisplay(maxUndoPerLevel);
         MoveHistoryManager.Instance.ClearHistory();
         SetupAllTubeViews(gameModel.tubeHeight);
-        gameModel.PrintTubesStateToConsole();
     }
     public void SetupAllTubeViews(int tubeHeight)
     {
         if(tubesContainerTransform == null)
         {
-            Debug.LogError("TubesContainerTransform is not assigned!"); 
+            GameObject tubeContainerObj = GameObject.Find(CONST.TUBELAYOUT);
+            if (tubeContainerObj != null)
+            {
+                tubesContainerTransform = tubeContainerObj.GetComponent<RectTransform>();
+                Debug.Log("Found tubesContainerTransform in the scene by name");
+            }
+
         }
+        boardView.SetBackground(GameManager.Instance.dataChoiceItem.SpriteBG);
         foreach (Transform child in tubesContainerTransform) 
         {
             Destroy(child.gameObject);
@@ -125,7 +132,7 @@ public class GameController : MonoBehaviour
             {
                 GameObject tubeObjView = Instantiate( tubePrefabs, tubesContainerTransform);
                 TubeView tubeView = tubeObjView.GetComponent<TubeView>();
-                tubeView.Initialize(currentTubeModel, i,tubeHeight,GameManager.Instance.playerSettings.habitat);
+                tubeView.Initialize(currentTubeModel, i,tubeHeight,GameManager.Instance.dataChoiceItem.habitatType);
                 tubeViewInstances.Add(tubeView);
                 tubeView.ShowView();
             }
@@ -188,7 +195,6 @@ public class GameController : MonoBehaviour
                 }
 
 
-                gameModel.PrintTubesStateToConsole();
                 break;
               
         }
@@ -235,6 +241,7 @@ public class GameController : MonoBehaviour
             if (hint.IsValid)
             {
                 ChoseTubeSource(hint.SourceTubeIndex);
+                hintId = hint.SourceTubeIndex;
                 EffectManager.Instance.ArrowEffect(tubeViewInstances[hint.DestinationTubeIndex]);
             }
         }
@@ -243,10 +250,15 @@ public class GameController : MonoBehaviour
     public void HandleUndo()
     {
         noActionTimer = 0;
+        
         if (maxUndoPerLevel > 0 && currentSelectionState != SelectionState.AnimatingMove)
         {
             if (MoveHistoryManager.Instance.CanUndo())
             {
+                EffectManager.Instance.StopArrowEffect();
+                tubeViewInstances[hintId].SetSelectedHighlight(false);
+
+
                 MoveOperation moveOperation = MoveHistoryManager.Instance.GetLastMoveForUndoAndPop();
                 gameModel.Undo(moveOperation);
                 maxUndoPerLevel--;
@@ -279,9 +291,23 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
 
-        UIManager.Instance.ShowPopup<PopupWin>();
+        int coin = CoinWin();
+        int price = GameManager.Instance.shopDataLoader.LoadCoin();
+        price += coin;
+        CoinData coinData = new CoinData();
+        coinData.coins = coin;
+        coinData.totalCoins = price;
+        UIManager.Instance.ShowPopup<PopupWin>(coinData);
+        GameManager.Instance.shopDataLoader.SaveCoin(price);
         BasePopup basePopup = UIManager.Instance.CurPopup;
         PopupWin popupWin = basePopup.GetComponent<PopupWin>();
         popupWin.OnButtonContinueEvent += StartGame;
+
+    }
+
+    public int CoinWin()
+    {
+        int coinWin = UnityEngine.Random.Range(5, 25);
+        return coinWin;
     }
 }

@@ -1,8 +1,11 @@
-using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.U2D;
+using UnityEngine.UI;
 using static GameManager;
 
 public enum TypeItem
@@ -21,20 +24,32 @@ public class ShopContronler : MonoBehaviour
 
     List<DataItem> habitatAnimal;
     List<DataItem> shopBGDataList;
+
     List<DataItem> currentListData;
 
     TypeItem tapCurrent = TypeItem.Background;
     BasePopup popupCur;
     PopupShopPannel popupShopPannel;
     int countBG;
+    int idChoice;
     public enum TapCurrent
     {
         Background,
         Animal,
     }
+
+    public enum ChoseItem
+    {
+        Choice,
+        NOChoice,
+        Buy,
+    }
+
+    event Action <int,ChoseItem> OnClickItemEvent;
+
     private void Awake()
     {
-       
+       OnClickItemEvent += OnBuyOrChoiceItem;
     }
     
     void Start()
@@ -69,6 +84,7 @@ public class ShopContronler : MonoBehaviour
             
             SetUPAllItem(type);
         }
+       
     }
     public void SetUPAllItem(TypeItem typeItem)
     {
@@ -79,6 +95,8 @@ public class ShopContronler : MonoBehaviour
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
+            shopItemViewsList.Clear();
+            dataItemList.Clear();
         }
         if (typeItem == TypeItem.Background)
         {
@@ -97,16 +115,52 @@ public class ShopContronler : MonoBehaviour
         for (int i = 0; i < shopDataList.Count; i++)
         {
             DataItem data = shopDataList[i];
+            if (data.isChoiceItem)
+            {
+                idChoice = i;
+            }
             GameObject itemShop = Instantiate(shopItemPrefab, content);
             ShopItemView shopItemView = itemShop.GetComponent<ShopItemView>();
-            shopItemView.SetUpItem(data.icon, data.itemName, data.value, i, data.isPurchasable, data.isChoiceItem);
+            shopItemView.SetUpItem(data.icon, data.itemName, data.value, i, data.isPurchasable, data.isChoiceItem, OnClickItemEvent);
             shopItemViewsList.Add(shopItemView);
             dataItemList.Add(data);
         }
     }
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
+    void OnBuyOrChoiceItem(int id, ChoseItem isChoice)
+    {
+        int price = GameManager.Instance.shopDataLoader.LoadCoin();
+        switch (isChoice)
+        {
+            case ChoseItem.Choice:
+                Debug.Log("Choice item: " + id);
+                bool isChoiceItem = shopModel.GetItemChoice(dataItemList[id], dataItemList[idChoice]);
+                if (isChoiceItem)
+                    shopItemViewsList[idChoice].isChoiceItem = false;
+                    shopItemViewsList[idChoice].UpdateVisuals();
+                    shopItemViewsList[id].isChoiceItem = true;
+                    shopItemViewsList[id].UpdateVisuals();
+                    idChoice = id;
+                    GameManager.Instance.shopDataLoader.SaveGame(habitatAnimal, shopBGDataList, price);
+                    GameManager.Instance.dataChoiceItem = GameManager.Instance.shopDataLoader.LoadShopItem();
+                break;
+            case ChoseItem.Buy:
+                bool isBuy = shopModel.CheckItemPurchased(dataItemList[id], price);
+                if (isBuy)
+                {
+                    shopItemViewsList[id].isPurchasable = true;
+                    shopItemViewsList[id].UpdateVisuals();
+                    int priceTotal = price - dataItemList[id].value;
+                    GameManager.Instance.shopDataLoader.SaveGame(habitatAnimal, shopBGDataList, priceTotal);
+                    BasePopup basePopup = UIManager.Instance.CurPopup;
+                    basePopup.GetComponent<PopupShopPannel>().LoadCoinPopup();
+                }
+                break;
+        }
+  
+    }
+
 }

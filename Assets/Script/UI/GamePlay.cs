@@ -5,6 +5,7 @@ public class GamePlay : BaseScreen
     public override void Hide()
     {
         base.Hide();
+        SoundManager.Instance.PlayHome();
     }
 
     public override void Init()
